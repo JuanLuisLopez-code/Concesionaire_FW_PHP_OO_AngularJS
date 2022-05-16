@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="AngularJS_FW_PHP_OO_MVC" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WEBSITE</title>
+    <!--========== ANGULAR JS ==========-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js"></script>
+
+    <!--========== CONTROLLER AND SERVICES ==========-->
+    <script src="frontend/app.js"></script>
+    <script src="frontend/apiconnector.js"></script>
+    <script type="text/javascript" src="frontend/modules/contact/controller/controller_contact.js"></script>
+    <script type="text/javascript" src="frontend/modules/home/controller/controller_home.js"></script>
+
+    <!--========== CSS ==========-->
+    <link rel="stylesheet" href="frontend/view/css/css_general.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+    <!-- OwlCarousel -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <!--========== TOASTR ==========-->
+    <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+    <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+</head>
+
+<body>
+    <div ng-include='"frontend/view/inc/menu.view.html"'></div>
+    <div ng-view autoscroll="true"></div>
+    <div ng-include='"frontend/view/inc/footer.view.html"'></div>
+</body>
+
+<h1></h1>
+
+</html>

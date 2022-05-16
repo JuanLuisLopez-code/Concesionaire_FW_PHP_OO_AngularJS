@@ -1,0 +1,60 @@
+<meta charset="utf-8">
+<title>Concesionario</title>
+
+
+<link rel="stylesheet" href="/frontend/view/css/css_general.css">
+<link rel="stylesheet" href="/frontend/view/css/bootstrap.css">
+<link rel="stylesheet" href="/frontend/view/css/style.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+
+
+<body>
+
+    <div id="slider" class="owl-carousel owl-theme">
+        <div class="item" ng-click="callback_shop()" ng-repeat="brand in carousel_scope">
+            <img src="frontend/{{brand.brand_image}}">
+        </div>
+    </div>
+    <div class="section group" id="containerCategories" ng-repeat="categoria in categoria_scope">
+        <div class="grid_1_of_4 images_1_of_4">
+            <h3>{{categoria.cat_name}}</h3>
+            <a class="estado" id="' + categoria[row].cat_name + '"><img src='frontend/{{categoria.cat_image}}'>
+            </a>
+            <p>En este apartado usted puede comprar coches de categoria {{categoria.cat_name}}</p>
+            <div class="btn">
+                <a class="estado link" id="{{categoria.cat_name}}"><span><span>Read More</span></span></a>
+            </div>
+        </div>
+    </div>
+    <div class="image group" id="containerType" ng-repeat="type in type_scope">
+        <div class="grid images_3_of_1">
+            <a class="type" id="{{type.type_name}}"><img src="frontend/{{type.type_image}}" alt=""></img>
+            </a>
+        </div>
+        <div class="grid span_2_of_3">
+            <h3>{{type.type_name}} </h3>
+            <p>En este apartado usted puede comprar coches {{type.type_name}}</p>
+            <div class="btn">
+                <a class="type link" id="type.type_name}}"><span><span>Read More</span></span></a>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+    </div>
+    <div id="featured">
+        <div id="prueba" ng-repeat="books in books_scope">
+            <br>
+            <div id='cont_img'><img src='{{books.thumbnail}}' class='cart' data-toggle='modal' data-target='#exampleModal'></div>
+            <div id='list_header'><span id='li_brand'> {{books.title}} </br></span></div>
+        </div>
+    </div>
+    <div id="btnfeatured"></div>
+    <div id="nomore"></div>
+
+</body>

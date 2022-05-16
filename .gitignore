@@ -1,0 +1,6 @@
+backend/.htaccess
+backend/utils/vendor
+backend/utils/mail.ini
+backend/model/db.ini
+backend/model/jwt.ini
+**.ini
