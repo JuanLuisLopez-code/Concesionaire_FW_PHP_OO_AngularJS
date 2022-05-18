@@ -2,12 +2,12 @@
 <title>Concesionario</title>
 
 
-<link rel="stylesheet" href="/frontend/view/css/css_general.css">
-<link rel="stylesheet" href="/frontend/view/css/bootstrap.css">
-<link rel="stylesheet" href="/frontend/view/css/style.css">
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
@@ -15,11 +15,14 @@
 
 <body>
 
-    <div id="slider" class="owl-carousel owl-theme">
-        <div class="item" ng-click="callback_shop()" ng-repeat="brand in carousel_scope">
-            <img src="frontend/{{brand.brand_image}}">
+    <data-owl-carousel id="main-carousel" class="owl-carousel" carousel-type="{type:'main'}">
+        <div owl-carousel-item="" ng-repeat="item in carousel_scope" class="item">
+            <div id="{{item.brand_id}}">
+                <img src="frontend/{{item.brand_image}}" ng-click="click_carousel(item.id_brand)">
+            </div>
         </div>
-    </div>
+    </data-owl-carousel>
+
     <div class="section group" id="containerCategories" ng-repeat="categoria in categoria_scope">
         <div class="grid_1_of_4 images_1_of_4">
             <h3>{{categoria.cat_name}}</h3>
@@ -27,10 +30,11 @@
             </a>
             <p>En este apartado usted puede comprar coches de categoria {{categoria.cat_name}}</p>
             <div class="btn">
-                <a class="estado link" id="{{categoria.cat_name}}"><span><span>Read More</span></span></a>
+                <a class="estado link" id="{{categoria.cat_name}}" ng-click="click_cat(categoria.cat_name)"><span><span>Read More</span></span></a>
             </div>
         </div>
     </div>
+
     <div class="image group" id="containerType" ng-repeat="type in type_scope">
         <div class="grid images_3_of_1">
             <a class="type" id="{{type.type_name}}"><img src="frontend/{{type.type_image}}" alt=""></img>
@@ -40,13 +44,14 @@
             <h3>{{type.type_name}} </h3>
             <p>En este apartado usted puede comprar coches {{type.type_name}}</p>
             <div class="btn">
-                <a class="type link" id="type.type_name}}"><span><span>Read More</span></span></a>
+                <a class="type link" id="{{type.type_name}}" ng-click="click_type(type.type_name)"><span><span>Read More</span></span></a>
             </div>
             <br>
             <br>
         </div>
     </div>
     </div>
+
     <div id="featured">
         <div id="prueba" ng-repeat="books in books_scope">
             <br>

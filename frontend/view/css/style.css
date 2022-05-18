@@ -33143,10 +33143,11 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     content: "\e0db";
 }
 
-.mapboxgl-popup {
+
+/* .mapboxgl-popup {
     max-width: 400px;
     font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-}
+} */
 
 .div-filters {
     display: block;
@@ -33155,7 +33156,8 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     text-align: center;
 }
 
-#div-map {
+
+/* #div-map {
     display: block;
     float: right;
     width: 100px;
@@ -33164,10 +33166,13 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 #map {
     position: absolute;
     width: 35%;
-    margin-top: 10%;
-}
+    margin-top: 10%; */
 
-#overlay {
+
+/* } */
+
+
+/* #overlay {
     position: fixed;
     top: 0;
     z-index: 100;
@@ -33175,7 +33180,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     height: 100%;
     display: none;
     background: rgba(0, 0, 0, 0.6);
-}
+} */
 
 .cv-spinner {
     height: 100%;

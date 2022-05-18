@@ -22,6 +22,14 @@ app.config(['$routeProvider', function($routeProvider) {
                     return services.get_api('https://www.googleapis.com/books/v1/volumes?q=car');
                 }
             }
+        }).when("/shop", {
+            templateUrl: "frontend/modules/shop/view/home_shop.html",
+            controller: "controller_shop",
+            resolve: {
+                shopAll: function(services) {
+                    return services.post('shop', 'shopAll')
+                }
+            }
         }).otherwise("/home", {
             templateUrl: "frontend/modules/home/view/homepage.html",
             controller: "controller_home",
