@@ -19,7 +19,7 @@
 
     <carousel interval="myInterval" no-wrap="noWrapSlides">
         <slide ng-repeat=" slide in carousel_scope ">
-            <img ng-src="frontend/{{slide.brand_image}}" style="margin: auto;">
+            <img ng-src="frontend/{{slide.brand_image}}" style="margin: auto;" ng-click="click_carousel(slide.id_brand)">
         </slide>
     </carousel>
 

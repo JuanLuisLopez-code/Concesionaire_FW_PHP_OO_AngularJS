@@ -7,7 +7,10 @@
 <body>
     <div class="wrap" style="display: inline-flex; width: 100%;">
         <div class="div-filters">
-            <div class="highlight"></div>
+            <div class="highlight">
+                <p>Tus filtros: </p>
+                <p ng-repeat="filtros in filtro_scope">{{filtros}}</p>
+            </div>
             <div class="filters">
                 <div>
                     <br>
@@ -35,7 +38,7 @@
             <button class="filter_remove" id="Remove_filter" ng-click="filter_remove()">Remove</button>
         </div>
         <div class="image group" id="containerShop" style="display: block; width: 700px;">
-            <div>
+            <div infinite-scroll="loadMore()">
                 <div id="overlay" ng-repeat="cars in shopAll_scope">
                     <div class="cv-spinner">
                         <div class="page">
@@ -84,8 +87,9 @@
             </div>
         </div>
     </div>
-    <div id="div-map">
-        <div id="map"></div>
+
+    <div id="div-map" ng-controller="GeolocateControlController">
+        <div mapboxgl gl-controls="glControls"></div>
     </div>
     </div>
     <div id="pagination"></div>

@@ -1,18 +1,30 @@
 app.factory('services_shop', ['services', '$rootScope', function(services, $rootScope) {
-    let service = { filter_home: filter_home, filter_shop: filter_shop, details: details, visitas: visitas };
+    let service = { filter_home: filter_home, filter_shop: filter_shop, details: details, visitas: visitas, highlight: highlight };
     return service;
 
     function filter_home(filtros) {
         services.post('shop', 'redirect', { filtros })
             .then(function(response) {
-                $rootScope.shopAll_scope = response;
+                var count1 = 2;
+                $rootScope.loadMore = function() {
+                    count1++;
+                    $rootScope.shopAll_scope = response.slice(0, count1);
+                }
             })
+    }
+
+    function highlight(filtros) {
+        $rootScope.filtro_scope = filtros;
     }
 
     function filter_shop(filter) {
         services.post('shop', 'filter', { filter })
             .then(function(response) {
-                $rootScope.shopAll_scope = response;
+                var count1 = 2;
+                $rootScope.loadMore = function() {
+                    count1++;
+                    $rootScope.shopAll_scope = response.slice(0, count1);
+                }
             })
     }
 

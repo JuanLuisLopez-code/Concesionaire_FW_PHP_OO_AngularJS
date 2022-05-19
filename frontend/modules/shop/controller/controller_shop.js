@@ -1,4 +1,4 @@
-app.controller('controller_shop', function($rootScope, $scope, $route, services, shopAll, services_shop) {
+app.controller('controller_shop', function($rootScope, $scope, $route, services, shopAll, services_shop, $window) {
     $scope.asd = true;
     $scope.img_carousel = false;
 
@@ -31,9 +31,14 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
     } else if (localStorage.getItem("filters")) {
         services_shop.filter_home(JSON.parse(localStorage.getItem("filters")));
     } else if (localStorage.getItem("filter")) {
+        services_shop.highlight(JSON.parse(localStorage.getItem("filter")));
         services_shop.filter_shop(JSON.parse(localStorage.getItem("filter")));
     } else {
-        $scope.shopAll_scope = shopAll;
+        var count1 = 2;
+        $scope.loadMore = function() {
+            count1++;
+            $scope.shopAll_scope = shopAll.slice(0, count1);
+        }
     }
 
     $scope.filter_remove = function() {
@@ -43,6 +48,17 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
         localStorage.removeItem("filters");
         localStorage.removeItem("filter");
         localStorage.removeItem("details");
-        $route.reload();
+        $window.location.reload();
     }
-});
+}).run([function() {
+    mapboxgl.accessToken = 'pk.eyJ1IjoiMjBqdWFuMTUiLCJhIjoiY2t6eWhubW90MDBnYTNlbzdhdTRtb3BkbyJ9.uR4BNyaxVosPVFt8ePxW1g';
+}]).controller('GeolocateControlController', ['$scope', function($scope) {
+    $scope.glControls = {
+        geolocate: {
+            enabled: true,
+            options: {
+                position: 'top-left'
+            }
+        }
+    };
+}]);
