@@ -1,4 +1,6 @@
 app.controller('controller_shop', function($rootScope, $scope, $route, services, shopAll, services_shop) {
+    $scope.asd = true;
+    $scope.img_carousel = false;
 
     $scope.filter_button = function(filter_type, filter_category, filter_order) {
         var filter = [];
@@ -16,8 +18,17 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
         $route.reload();
     }
 
+    $scope.details = function() {
+        services_shop.visitas(this.cars.id);
+        localStorage.setItem('details', this.cars.id);
+        $route.reload();
+    }
 
-    if (localStorage.getItem("filters")) {
+    if (localStorage.getItem('details')) {
+        services_shop.details(localStorage.getItem('details'));
+        $scope.asd = false;
+        $scope.img_carousel = true;
+    } else if (localStorage.getItem("filters")) {
         services_shop.filter_home(JSON.parse(localStorage.getItem("filters")));
     } else if (localStorage.getItem("filter")) {
         services_shop.filter_shop(JSON.parse(localStorage.getItem("filter")));
@@ -25,14 +36,13 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
         $scope.shopAll_scope = shopAll;
     }
 
-
-
     $scope.filter_remove = function() {
         localStorage.removeItem("filter_type");
         localStorage.removeItem("filter_category");
         localStorage.removeItem("filter_order");
         localStorage.removeItem("filters");
         localStorage.removeItem("filter");
+        localStorage.removeItem("details");
         $route.reload();
     }
 });

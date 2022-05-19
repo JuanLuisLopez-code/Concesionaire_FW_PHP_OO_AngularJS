@@ -1,27 +1,27 @@
 <meta charset="utf-8">
 <title>Concesionario</title>
 
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
 
 
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
 
 
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
 
+<!-- index="slide.id" -->
 
 <body>
 
-    <data-owl-carousel id="main-carousel" class="owl-carousel" carousel-type="{type:'main'}">
-        <div owl-carousel-item="" ng-repeat="item in carousel_scope" class="item">
-            <div id="{{item.brand_id}}">
-                <img src="frontend/{{item.brand_image}}" ng-click="click_carousel(item.id_brand)">
-            </div>
-        </div>
-    </data-owl-carousel>
+    <carousel interval="myInterval" no-wrap="noWrapSlides">
+        <slide ng-repeat=" slide in carousel_scope ">
+            <img ng-src="frontend/{{slide.brand_image}}" style="margin: auto;">
+        </slide>
+    </carousel>
 
     <div class="section group" id="containerCategories" ng-repeat="categoria in categoria_scope">
         <div class="grid_1_of_4 images_1_of_4">

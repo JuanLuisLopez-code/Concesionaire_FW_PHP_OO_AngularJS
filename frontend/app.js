@@ -1,4 +1,4 @@
-var app = angular.module('AngularJS_FW_PHP_OO_MVC', ['ngRoute', 'toastr']);
+var app = angular.module('AngularJS_FW_PHP_OO_MVC', ['ngRoute', 'toastr', 'ui.bootstrap']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
