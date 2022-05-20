@@ -25,9 +25,7 @@
         }
 
         public function select_search_category($db, $args) {
-            $sql = "SELECT ca.*
-            FROM car c, categoria ca
-            WHERE ca.id_categoria = c.categoria AND c.marca = '$args'";
+            $sql = "SELECT ca.* FROM car c, categoria ca, brand b WHERE ca.id_categoria = c.categoria AND c.marca = b.id_brand and b.brand_name = '$args'";
             $stmt = $db->ejecutar($sql);
         return $db->listar($stmt);
         }
