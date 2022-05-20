@@ -50,6 +50,11 @@ app.config(['$routeProvider', function($routeProvider) {
         });
 }]);
 
+app.run(function($rootScope, services, services_search) {
+    services_search.load_brands();
+
+});
+
 
 
 
