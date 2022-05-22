@@ -36,8 +36,8 @@
 			return $this -> dao -> select_count_filter($this->db, $args);
 		}
 
-		public function get_search_BLL($args, $total_prod, $items_page) {
-			return $this -> dao -> select_search($this->db, $args, $total_prod, $items_page);
+		public function get_search_BLL($args) {
+			return $this -> dao -> select_search($this->db, $args);
 		}
 
 		public function get_count_search_BLL($args) {

@@ -34,8 +34,8 @@
             return $this -> bll -> get_count_filter_BLL($args);
         }
 
-        public function get_search($args, $total_prod, $items_page) {     
-            return $this -> bll -> get_search_BLL($args, $total_prod, $items_page);
+        public function get_search($args) {    
+            return $this -> bll -> get_search_BLL($args);
         }
 
         public function get_count_search($args) {          

@@ -50,20 +50,20 @@ app.config(['$routeProvider', function($routeProvider) {
         });
 }]);
 
-app.run(function($rootScope, services, services_search) {
+app.run(function($rootScope, services, services_search, $location) {
     services_search.load_brands();
 
 
     $rootScope.rotate_category = function(brand) {
         services_search.load_category(brand);
     }
+
+    $rootScope.click_autocomplete = function(search_brand = undefined, search_category = undefined, autocomplete) {
+        services_search.search_autocomplete(search_brand, search_category, autocomplete);
+    }
+
+    $rootScope.click_search = function(search_brand = undefined, search_category = undefined, autocomplete = undefined) {
+        services_search.search(search_brand, search_category, autocomplete);
+        $location.path("/shop");
+    }
 });
-
-
-
-
-// DEBUG
-// services.post('home', 'categoria')
-// .then(function(resolve) {
-//     console.log(resolve)
-// })

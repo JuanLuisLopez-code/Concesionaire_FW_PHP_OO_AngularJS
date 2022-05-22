@@ -30,6 +30,8 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
         $scope.img_carousel = true;
     } else if (localStorage.getItem("filters")) {
         services_shop.filter_home(JSON.parse(localStorage.getItem("filters")));
+    } else if (localStorage.getItem("filters_search")) {
+        services_shop.filter_search(JSON.parse(localStorage.getItem("filters_search")));
     } else if (localStorage.getItem("filter")) {
         services_shop.highlight(JSON.parse(localStorage.getItem("filter")));
         services_shop.filter_shop(JSON.parse(localStorage.getItem("filter")));
@@ -47,6 +49,7 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
         localStorage.removeItem("filter_order");
         localStorage.removeItem("filters");
         localStorage.removeItem("filter");
+        localStorage.removeItem("filters_search");
         localStorage.removeItem("details");
         $window.location.reload();
     }

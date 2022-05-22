@@ -88,41 +88,38 @@ use Mockery\Undefined;
             return $db->listar($stmt);
         }
 
-        public function select_search($db, $filters_search, $total_prod, $items_page) {
-
+        public function select_search($db, $filters_search) {
             $count = 1;
 
-        $city = ($filters_search[0]['city'][0]);
-        $city_2 = ($filters_search[2]['city'][0]);
-
-        $sql = "SELECT c.*, i.img, ca.cat_name, t.type_name, b.brand_name
-        FROM car c INNER JOIN car_img i INNER JOIN categoria ca INNER JOIN type t INNER JOIN brand b
-        ON c.id = i.car AND  i.img LIKE ('%1%') AND c.categoria = ca.id_categoria AND c.combustible = t.id_type AND c.marca = b.id_brand";
+        if ($filters_search[0]['complete']){
+            $city = ($filters_search[0]['city']);
+        }else{
+            $city_2 = ($filters_search[2]['city']);
+        }
+        $brand = $filters_search[0]['brand'];
+        $cat = $filters_search[1]['category'];
+        
+        $sql = "SELECT c.*, i.img, ca.cat_name, t.type_name, b.brand_name FROM car c INNER JOIN car_img i INNER JOIN categoria ca INNER JOIN type t INNER JOIN brand b ON c.id = i.car AND  i.img LIKE ('%1%') AND c.categoria = ca.id_categoria AND c.combustible = t.id_type AND c.marca = b.id_brand";
 
         for ($i=0; $i < $count; $i++){
             if ($count==1){
-                if ($filters_search[0]['brand'][0]){
-                    $sql .= " WHERE c.marca = " . ($filters_search[0]['brand'][0]);
+                if ($filters_search[0]['brand']){
+                    $sql .= " WHERE b.brand_name = " . "'$brand'";
                     $count = 2;
                 }
-                else if ($filters_search[0]['category'][0]){
-                    $sql .= " WHERE c.categoria = " . ($filters_search[0]['category'][0]);
-                    $count = 2;
-                }
-                else if ($filters_search[0]['city'][0]){
+                else if ($filters_search[0]['city']){
                     $sql .= " WHERE c.city = " . "'$city'";
                     $count = 2;
                 }
             }else{
-                if ($filters_search[1]['category'][0]){
-                    $sql .= " AND c.categoria = " . ($filters_search[1]['category'][0]);
+                if ($filters_search[1]['category']){
+                    $sql .= " AND ca.cat_name = " ."'$cat'";
                 }
-                if ($filters_search[2]['city'][0]){
+                if ($filters_search[2]['city']){
                     $sql .= " AND c.city = " . "'$city_2'";
                 }
             }
         }
-        $sql.= " LIMIT $total_prod, $items_page";
             $stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }

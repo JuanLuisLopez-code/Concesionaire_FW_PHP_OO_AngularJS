@@ -24,9 +24,18 @@
 
 
 
-                <input type="text" id="autocom" autocomplete="off" placeholder="City" style="width: 10%;" />
-                <div id="search_auto"></div>
-                <input type="button" value="search" id="search-btn" class="btna third" style="display: inline;" />
+                <input type="text" id="autocom" autocomplete="off" placeholder="City" style="width: 10%;" ng-model="autocomplete" ng-change="click_autocomplete(search_brand, search_category, autocomplete)" />
+                <div id="search_auto">
+                    <div id="search_auto" ng-click="click_search(search_brand, search_category, com.nombre)" ng-repeat="com in complete">{{com.nombre}}</div>
+                </div>
+
+
+
+
+
+
+
+                <input type="button" value="search" id="search-btn" class="btna third" style="display: inline;" ng-click="click_search(search_brand, search_category, autocomplete)" />
             </div>
             <div class="hdr-nav">
                 <ul class="nav">

@@ -1,5 +1,5 @@
 app.factory('services_shop', ['services', '$rootScope', function(services, $rootScope) {
-    let service = { filter_home: filter_home, filter_shop: filter_shop, details: details, visitas: visitas, highlight: highlight };
+    let service = { filter_home: filter_home, filter_shop: filter_shop, details: details, visitas: visitas, highlight: highlight, filter_search: filter_search };
     return service;
 
     function filter_home(filtros) {
@@ -19,6 +19,17 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
 
     function filter_shop(filter) {
         services.post('shop', 'filter', { filter })
+            .then(function(response) {
+                var count1 = 2;
+                $rootScope.loadMore = function() {
+                    count1++;
+                    $rootScope.shopAll_scope = response.slice(0, count1);
+                }
+            })
+    }
+
+    function filter_search(filters_search) {
+        services.post('shop', 'filters_search', { filters_search })
             .then(function(response) {
                 var count1 = 2;
                 $rootScope.loadMore = function() {
