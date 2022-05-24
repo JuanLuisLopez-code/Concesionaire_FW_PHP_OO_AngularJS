@@ -1,6 +1,8 @@
-app.controller('controller_shop', function($rootScope, $scope, $route, services, shopAll, services_shop, $window) {
+app.controller('controller_shop', function($rootScope, $scope, $route, services, shopAll, services_shop, services_shop_map, $window) {
+
     $scope.asd = true;
     $scope.img_carousel = false;
+    $scope.div_more_cars = false;
 
     $scope.filter_button = function(filter_type, filter_category, filter_order) {
         var filter = [];
@@ -26,8 +28,10 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
 
     if (localStorage.getItem('details')) {
         services_shop.details(localStorage.getItem('details'));
+        services_shop.more_cars(localStorage.getItem('details'));
         $scope.asd = false;
         $scope.img_carousel = true;
+        $scope.div_more_cars = true;
     } else if (localStorage.getItem("filters")) {
         services_shop.filter_home(JSON.parse(localStorage.getItem("filters")));
     } else if (localStorage.getItem("filters_search")) {
@@ -41,6 +45,7 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
             count1++;
             $scope.shopAll_scope = shopAll.slice(0, count1);
         }
+        services_shop_map.mapBox_all(shopAll);
     }
 
     $scope.filter_remove = function() {
@@ -53,15 +58,4 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
         localStorage.removeItem("details");
         $window.location.reload();
     }
-}).run([function() {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiMjBqdWFuMTUiLCJhIjoiY2t6eWhubW90MDBnYTNlbzdhdTRtb3BkbyJ9.uR4BNyaxVosPVFt8ePxW1g';
-}]).controller('GeolocateControlController', ['$scope', function($scope) {
-    $scope.glControls = {
-        geolocate: {
-            enabled: true,
-            options: {
-                position: 'top-left'
-            }
-        }
-    };
-}]);
+})

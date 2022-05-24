@@ -2608,25 +2608,13 @@ h3.details {
 
 /* Control nav styles (e.g. 1,2,3...) */
 
-.nivo-controlNav {
-    text-align: center;
-    padding: 15px 0;
-}
 
-.nivo-controlNav a {
-    cursor: pointer;
-}
-
-.nivo-controlNav a.active {
-    font-weight: bold;
-}
-
-#map {
+/* #map {
     position: flex;
     top: 0;
     bottom: 0;
     width: 100%;
-}
+} */
 
 .btna {
     box-sizing: border-box;
@@ -2681,5 +2669,3 @@ h3.details {
 #featured {
     display: flex;
 }
-
-#prueba {}

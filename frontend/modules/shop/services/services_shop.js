@@ -1,6 +1,7 @@
 app.factory('services_shop', ['services', '$rootScope', function(services, $rootScope) {
-    let service = { filter_home: filter_home, filter_shop: filter_shop, details: details, visitas: visitas, highlight: highlight, filter_search: filter_search };
+    let service = { filter_home: filter_home, filter_shop: filter_shop, details: details, visitas: visitas, highlight: highlight, filter_search: filter_search, more_cars: more_cars };
     return service;
+
 
     function filter_home(filtros) {
         services.post('shop', 'redirect', { filtros })
@@ -48,9 +49,22 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
                     img_array.push(response[i].img);
                 }
                 single.push(response[0])
-                console.log(img_array)
                 $rootScope.img_array_scope = img_array;
                 $rootScope.shopAll_scope = single;
+            })
+    }
+
+    function more_cars(id) {
+        console.log(id)
+        services.post('shop', 'moreCars', { id })
+            .then(function(response) {
+                var count1 = 2;
+
+                $rootScope.loadMore = function() {
+                    console.log(response.slice(0, count1))
+                    count1++;
+                    $rootScope.more_cars_scope = response.slice(0, count1);
+                }
             })
     }
 

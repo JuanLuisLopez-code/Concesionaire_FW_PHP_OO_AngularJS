@@ -1,4 +1,4 @@
-var app = angular.module('AngularJS_FW_PHP_OO_MVC', ['ngRoute', 'toastr', 'ui.bootstrap', 'mapboxgl-directive', 'infinite-scroll']);
+var app = angular.module('AngularJS_FW_PHP_OO_MVC', ['ngRoute', 'toastr', 'ui.bootstrap', 'infinite-scroll']);
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider
@@ -65,5 +65,11 @@ app.run(function($rootScope, services, services_search, $location) {
     $rootScope.click_search = function(search_brand = undefined, search_category = undefined, autocomplete = undefined) {
         services_search.search(search_brand, search_category, autocomplete);
         $location.path("/shop");
+    }
+
+    $rootScope.prueba = function() {
+        $rootScope.autocomplete = this.com.city;
+        $rootScope.complete = null;
+
     }
 });

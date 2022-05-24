@@ -33156,31 +33156,17 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     text-align: center;
 }
 
-
-/* #div-map {
+#div-map {
     display: block;
     float: right;
-    width: 100px;
+    width: 50em;
 }
 
 #map {
     position: absolute;
     width: 35%;
-    margin-top: 10%; */
-
-
-/* } */
-
-
-/* #overlay {
-    position: fixed;
-    top: 0;
-    z-index: 100;
-    width: 100%;
-    height: 100%;
-    display: none;
-    background: rgba(0, 0, 0, 0.6);
-} */
+    margin-top: 10%;
+}
 
 .cv-spinner {
     height: 100%;
@@ -33216,4 +33202,23 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 .like_white {
     color: white;
     float: right;
+}
+
+.search-item {
+    background: none;
+    background-size: 10%;
+    font-size: x-large;
+    color: black;
+    user-select: none;
+    background-color: white;
+}
+
+.search-item:hover {
+    cursor: pointer;
+}
+
+#autocomplete {
+    flex-direction: column;
+    position: relative;
+    z-index: 0;
 }

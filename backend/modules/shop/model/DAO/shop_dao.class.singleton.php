@@ -90,11 +90,12 @@ use Mockery\Undefined;
 
         public function select_search($db, $filters_search) {
             $count = 1;
-
+            
         if ($filters_search[0]['complete']){
-            $city = ($filters_search[0]['city']);
+            $city = ($filters_search[0]['complete']);
+           
         }else{
-            $city_2 = ($filters_search[2]['city']);
+            $city_2 = ($filters_search[2]['complete']);
         }
         $brand = $filters_search[0]['brand'];
         $cat = $filters_search[1]['category'];
@@ -107,8 +108,9 @@ use Mockery\Undefined;
                     $sql .= " WHERE b.brand_name = " . "'$brand'";
                     $count = 2;
                 }
-                else if ($filters_search[0]['city']){
+                else {
                     $sql .= " WHERE c.city = " . "'$city'";
+                    
                     $count = 2;
                 }
             }else{
@@ -247,13 +249,11 @@ use Mockery\Undefined;
 
         public function select_moreCars($db, $args) {
             $id = $args[0];
-            $move= $args[1];
-            $xpage= $args[2];
             $sql = " SELECT ca.cat_name, c.*, b.brand_name, t.type_name
             FROM car c, categoria ca, brand b, type t
             WHERE c.categoria = (SELECT cc.categoria
                                 FROM car cc
-                                WHERE cc.id = '$id') AND c.categoria = ca.id_categoria AND b.id_brand = c.marca AND t.id_type = c.combustible LIMIT $move, $xpage";
+                                WHERE cc.id = '$id') AND c.categoria = ca.id_categoria AND b.id_brand = c.marca AND t.id_type = c.combustible";
             $stmt = $db->ejecutar($sql);
             return $db->listar($stmt);
         }

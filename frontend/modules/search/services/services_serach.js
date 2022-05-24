@@ -6,7 +6,6 @@ app.factory('services_search', ['services', '$rootScope', function(services, $ro
         services.post('search', 'load_brands')
             .then(function(response) {
                 $rootScope.brands_search = response;
-                console.log(response);
             })
     }
 
@@ -17,7 +16,6 @@ app.factory('services_search', ['services', '$rootScope', function(services, $ro
                 for (var i = 0; i < response.length; i++) {
                     cat_push.push(response[i]['cat_name']);
                 }
-                console.log(cat_push)
                 $rootScope.categoria_search = cat_push;
             })
     }
@@ -27,9 +25,7 @@ app.factory('services_search', ['services', '$rootScope', function(services, $ro
             services.post('search', 'autocomplete', { search_brand: search_brand, search_category: search_category, complete: autocomplete })
                 .then(function(response) {
                     $rootScope.complete = response;
-                }, function(error) {
-                    console.log(error);
-                });
+                }, function(error) {});
         } else {
             $rootScope.complete = [];
         }

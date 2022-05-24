@@ -73,24 +73,51 @@
                                         </div>
                             </section>
                             </div>
+
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="slider">
-            <div class="slider-wrapper theme-default">
-                <div id="slider" class="nivoSlider">
-                </div>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nivoslider/3.2/jquery.nivo.slider.pack.min.js"></script>
-            </div>
-        </div>
-    </div>
+                    <div ng-show="div_more_cars">
+                        <div id="moreCars">
+                            <h1>Mas coches</h1>
+                            <div id="overlay" ng-repeat="cars in more_cars_scope">
+                                <div class="cv-spinner">
+                                    <div class="page">
+                                        <section class="section section-md bg-white">
+                                            <div class="shell">
+                                                <div class="range range-50 range-sm-center range-md-left range-md-middle range-md-reverse">
+                                                    <div class="cell-sm-6 wow fadeInRightSmall">
+                                                        <div class="thumb-line">
+                                                            <img src="frontend/{{cars.img}}" alt="" width="531" height="640" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="cell-sm-6">
+                                                        <div class="box-width-3">
+                                                            <p class="like" id="{{cars.id}}"></p>
+                                                            <p class="heading-1 wow fadeInLeftSmall">{{cars.brand_name}}</p>
+                                                            <article class="quote-big wow fadeInLeftSmall" data-wow-delay=".1s">
+                                                                <p class="q">{{cars.modelo}}</p>
+                                                                <p class="q">{{cars.precio}}€</p>
+                                                                <p class="q">{{cars.cat_name}}</p>
+                                                            </article>
+                                                            <div class="divider wow fadeInLeftSmall" data-wow-delay=".2s"></div>
+                                                            <p class="q">{{cars.type_name}}<i class="fa-thin fa-gas-pump fa-2xl"></i></p>
+                                                            <p class="wow fadeInLeftSmall" data-wow-delay=".3s">{{cars.puertas}}<i class="fa-solid fa-door-open fa-2xl"></i></p>
+                                                            <a class="button button-primary-outline button-ujarak button-size-1 wow fadeInLeftSmall link button_spinner" data-wow-delay=".4s" id="{{cars.id}}" ng-click="details()">Read More</a>
+                                                        </div>
+                                                    </div>
+                                        </section>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="div-map">
+                            <div id="map"></div>
+                        </div>
+                    </div>
 
-    <div id="div-map" ng-controller="GeolocateControlController">
-        <div mapboxgl gl-controls="glControls"></div>
-    </div>
-    </div>
-    <div id="pagination"></div>
+
+
 </body>
