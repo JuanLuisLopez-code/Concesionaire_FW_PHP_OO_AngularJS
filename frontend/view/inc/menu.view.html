@@ -5,50 +5,25 @@
                 <a href="#contact"><img src="frontend/view/images/logo.png" alt="" title="logo"></a>
             </div>
             <div class="div_search" style="display: inline; width: 5%; height: 5%;">
-
-
-
-
-
                 <select class="search_brand" ng-model="search_brand" ng-change="rotate_category(search_brand)">
                     <option value="" disabled selected>Seleccione marca</option>
                     <option ng-repeat="data in brands_search" id="{{data.id_brand}}">{{data.brand_name}}</option>
                 </select>
-
                 <select class="search_category" ng-model="search_category">
                     <option value="" disabled selected>Seleccione estado</option>
                     <option ng-repeat="cate in categoria_search">{{cate}}</option>
                 </select>
-
-
-
-
-
                 <input type="text" id="autocomplete" autocomplete="off" placeholder="City" style="width: 10%;" ng-model="$root.autocomplete" ng-change="click_autocomplete(search_brand, search_category, autocomplete)" />
                 <div id="search_auto">
                     <div id="search_auto" class="search-item" ng-click="prueba()" ng-repeat="com in complete">{{com.city}}</div>
                 </div>
-
-
-
-
-
-
-
                 <input type="button" value="search" id="search-btn" class="btna third" style="display: inline;" ng-click="click_search(search_brand, search_category, autocomplete)" />
             </div>
             <div class="hdr-nav">
                 <ul class="nav">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#shop" id="shop" class="shop">Shop</a></li>
-                    <li><a class="hsubs" data-tr="Idioma">Idioma</a>
-                        <ul class="subs">
-                            <li><a href="#" id="Ingles">Ingles</a></li>
-                            <li><a href="#" id="Espanol">Espanol</a></li>
-                            <li><a href="#" id="Valenciano">Valenciano</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="hsubs" id="move_login">Indetify</a></li>
+                    <li><a href="#login" class="hsubs" id="move_login">Indetify</a></li>
                     <div id="lavalamp"></div>
                 </ul>
             </div>

@@ -33156,16 +33156,13 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     text-align: center;
 }
 
-#div-map {
-    display: block;
-    float: right;
-    width: 50em;
-}
-
 #map {
     position: absolute;
-    width: 35%;
-    margin-top: 10%;
+    top: 0;
+    bottom: 0;
+    padding-top: 10em;
+    width: 30%;
+    height: 550px;
 }
 
 .cv-spinner {

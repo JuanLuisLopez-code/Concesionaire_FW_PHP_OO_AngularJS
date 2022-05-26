@@ -29,6 +29,7 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
     if (localStorage.getItem('details')) {
         services_shop.details(localStorage.getItem('details'));
         services_shop.more_cars(localStorage.getItem('details'));
+
         $scope.asd = false;
         $scope.img_carousel = true;
         $scope.div_more_cars = true;
