@@ -55,13 +55,11 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
     }
 
     function more_cars(id) {
-        console.log(id)
         services.post('shop', 'moreCars', { id })
             .then(function(response) {
                 var count1 = 2;
 
                 $rootScope.loadMore = function() {
-                    console.log(response.slice(0, count1))
                     count1++;
                     $rootScope.more_cars_scope = response.slice(0, count1);
                 }

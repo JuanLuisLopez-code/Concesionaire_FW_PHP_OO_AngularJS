@@ -22,7 +22,7 @@ use \Mailjet\Resources;
               'TextPart' => "My first Mailjet email",
               'HTMLPart' => "<h3>'Registro'</h3><br/>
                              <p>
-                             <a href=http://localhost/FW_PHP_OO_JQuery/index.php?page=login&op=view&$email_token_register&verify> Pulse aqui para validar su registro </a>
+                             <a href=http://localhost/AngularJS_FW_PHP_OO_MVC/#/verify/$email_token_register> Pulse aqui para validar su registro </a>
                              </p>",
               'CustomID' => "AppGettingStartedTest"
             ]
@@ -53,7 +53,7 @@ use \Mailjet\Resources;
                 'TextPart' => "My first Mailjet email",
                 'HTMLPart' => "<h3>'Cambio contraseña'</h3><br/>
                                <p>
-                               <a href=http://localhost/FW_PHP_OO_JQuery/index.php?page=login&op=view&$email_token_register&recovery> Pulse aqui para validar su cambio de contraseña </a>
+                               <a href=http://localhost/AngularJS_FW_PHP_OO_MVC/#login&$email_token_register&recovery> Pulse aqui para validar su cambio de contraseña </a>
                                </p>",
                 'CustomID' => "AppGettingStartedTest"
               ]

@@ -4,7 +4,6 @@ app.factory('services_shop_map', ['services', '$rootScope', function(services, $
 
 
     function mapBox_all(shop) {
-        console.log(shop)
         mapboxgl.accessToken = 'pk.eyJ1IjoiMjBqdWFuMTUiLCJhIjoiY2t6eWhubW90MDBnYTNlbzdhdTRtb3BkbyJ9.uR4BNyaxVosPVFt8ePxW1g';
 
         $rootScope.map = new mapboxgl.Map({

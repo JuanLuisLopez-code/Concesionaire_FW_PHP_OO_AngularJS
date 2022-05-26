@@ -1,5 +1,4 @@
 app.factory('services_contact', ['services', '$rootScope', 'toastr', function(services, $rootScope, toastr) {
-    console.log("hola");
     let service = { send_email: send_email };
     return service;
 
@@ -14,9 +13,7 @@ app.factory('services_contact', ['services', '$rootScope', 'toastr', function(se
                 location.href = "#/home";
                 window.location.reload();
                 return;
-            }, function(error) {
-                console.log(error);
-            });
+            }, function(error) {});
     }
 
 }]);
