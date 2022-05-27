@@ -24,6 +24,15 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#shop" id="shop" class="shop">Shop</a></li>
                     <li><a href="#login" class="hsubs" id="move_login">Indetify</a></li>
+                    <li>
+                        <a class="hsubs" id="move_login" ng-repeat="item in login_scope">
+                            <img src="{{item.avatar}}" id="avatar"></img>
+                            <ul class="subs">
+                                <li><a style="color: red;">{{item.username}}</a></li>
+                            </ul>
+                        </a>
+                    </li>
+                    <li><a class="hsubs" id="move_login" ng-show="log_out_show" ng-click="log_out()">Log Out</a></li>
                     <div id="lavalamp"></div>
                 </ul>
             </div>

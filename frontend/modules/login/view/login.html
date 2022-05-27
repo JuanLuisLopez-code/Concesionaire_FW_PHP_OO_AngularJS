@@ -10,20 +10,20 @@
                     <div class="sign-in-htm">
                         <div class="group">
                             <label for="user_login" class="label">Username</label>
-                            <input id="user_login" type="text" class="input" name="user_login" autofocus>
+                            <input id="user_login" type="text" class="input" name="user_login" autofocus ng-model="user_login">
                             <font color="red">
                                 <span id="error_user_login" class="error"></span>
                             </font>
                         </div>
                         <div class="group">
                             <label for="pass_login" class="label">Password</label>
-                            <input id="pass_login" type="password" class="input" data-type="password" name="passwd">
+                            <input id="pass_login" type="password" class="input" data-type="password" name="passwd" ng-model="passwd">
                             <font color="red">
                                 <span id="error_pass_login" class="error"></span>
                             </font>
                         </div>
                         <div class="group">
-                            <input type="button" class="button" id="login" value="Enter">
+                            <input type="button" class="button" id="login" value="Enter" ng-click="login()">
                         </div>
                         <div class="hr"></div>
                         <div class="group">

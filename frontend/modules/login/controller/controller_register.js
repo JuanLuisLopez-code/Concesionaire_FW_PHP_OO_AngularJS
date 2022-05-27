@@ -1,10 +1,15 @@
-app.controller('controller_register', function($rootScope, $scope, $route, services, services_register, $routeParams, services_paths) {
+app.controller('controller_register', function($rootScope, $scope, $route, services, services_register, $routeParams, services_paths, services_login) {
     $scope.log_reg = true;
     $scope.recovery = false;
 
     $scope.register = function() {
         let data = { 'user': $scope.user_register, 'pass': $scope.pass_register, 'email': $scope.email_register };
         services_register.register_user(data);
+    }
+
+    $scope.login = function() {
+        let data_login = { 'user_log': $scope.user_login, 'pass_log': $scope.passwd };
+        services_login.login_user(data_login);
     }
 
 

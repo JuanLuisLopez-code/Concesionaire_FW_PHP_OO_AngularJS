@@ -60,7 +60,8 @@
                     exit;
                 }
 			}else{
-				return "user no existe";
+				echo json_encode("user no existe");
+				exit;
 			}
 		}
 		
@@ -69,6 +70,7 @@
 			$check = middleware::midd_decode($token);
 			$exp_time = json_decode($check);
 			//comprobar si el token ha expirado o aun esta activo
+			
 			if($exp_time->exp == null || $exp_time->exp < time()){
 				return "Tiempo excedido";
 			} else {

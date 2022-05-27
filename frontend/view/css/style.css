@@ -33219,3 +33219,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
     position: relative;
     z-index: 0;
 }
+
+#avatar {
+    width: 3em;
+}

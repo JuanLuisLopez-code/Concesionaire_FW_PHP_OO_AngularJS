@@ -3,7 +3,7 @@ require_once(MODEL_PATH . 'JWT.class.php');
 class middleware{
     public static function midd_encode($user){
 
-        $jwt = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/FW_PHP_OO_JQuery/model/jwt.ini');
+        $jwt = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/AngularJS_FW_PHP_OO_MVC/backend/model/jwt.ini');
         $header = $jwt['header'];
         $secret = $jwt['secret'];
         $payload = '{"iat":"'.time().'","exp":"'.time() + (610).'","name":"'.$user.'"}';
@@ -16,12 +16,12 @@ class middleware{
     
     public static function midd_decode($token){
 
-        $jwt = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/FW_PHP_OO_JQuery/model/jwt.ini');
+        $jwt = parse_ini_file($_SERVER['DOCUMENT_ROOT'] . '/AngularJS_FW_PHP_OO_MVC/backend/model/jwt.ini');
         $secret = $jwt['secret'];
-
+        
         $JWT = new JWT;
         $check = $JWT->decode($token, $secret);
-
+        
         return $check;
     }
 }

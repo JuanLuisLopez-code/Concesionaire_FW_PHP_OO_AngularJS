@@ -9,7 +9,7 @@
         }
 
         function login_c() {
-            echo json_encode(common::load_model('login_model', 'get_login', $_POST['user_login'], $_POST['passwd']));
+            echo json_encode(common::load_model('login_model', 'get_login', $_POST['user'], $_POST['passwd']));
         }
 
         function token_c() {

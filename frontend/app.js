@@ -57,9 +57,8 @@ app.config(['$routeProvider', function($routeProvider) {
         });
 }]);
 
-app.run(function($rootScope, services, services_search, $location) {
+app.run(function($rootScope, services, services_search, $location, services_login, $route) {
     services_search.load_brands();
-
 
     $rootScope.rotate_category = function(brand) {
         services_search.load_category(brand);
@@ -78,4 +77,15 @@ app.run(function($rootScope, services, services_search, $location) {
         $rootScope.autocomplete = this.com.city;
         $rootScope.complete = null;
     }
+    if (localStorage.getItem('token')) {
+        services_login.token_c();
+    } else {
+        $rootScope.token_scope_log = false;
+        $rootScope.log_out_show = false;
+    }
+
+    $rootScope.log_out = function() {
+        localStorage.removeItem('token')
+    }
+
 });
