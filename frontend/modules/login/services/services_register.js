@@ -1,5 +1,5 @@
 app.factory('services_register', ['services', '$rootScope', 'toastr', function(services, $rootScope, toastr, $location) {
-    let service = { register_user: register_user };
+    let service = { register_user: register_user, recovery: recovery };
     return service;
 
     function register_user(data) {
@@ -16,6 +16,17 @@ app.factory('services_register', ['services', '$rootScope', 'toastr', function(s
                     }, 5000);
                 }
             })
+    }
+
+    function recovery(data) {
+        if (data['email_recovery'] == undefined) {
+            toastr.success('Porfavor escriba un email existente');
+        } else {
+            services.post('login', 'recovery_pass', { 'email_recovery': data['email_recovery'], 'passwd_recovery': data['passwd_recovery'] })
+                .then(function(response) {
+                    toastr.success('Porfavor revise su correo para cambiar la contraseña');
+                })
+        }
     }
 
 }])

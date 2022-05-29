@@ -37,6 +37,9 @@ app.config(['$routeProvider', function($routeProvider) {
         }).when("/verify/:token", {
             templateUrl: "frontend/modules/login/view/login.html",
             controller: "controller_register"
+        }).when("/recovery/:token", {
+            templateUrl: "frontend/modules/login/view/login.html",
+            controller: "controller_register"
         }).otherwise("/home", {
             templateUrl: "frontend/modules/home/view/homepage.html",
             controller: "controller_home",
@@ -85,7 +88,10 @@ app.run(function($rootScope, services, services_search, $location, services_logi
     }
 
     $rootScope.log_out = function() {
-        localStorage.removeItem('token')
+        localStorage.removeItem('token');
+        localStorage.removeItem('move');
+        localStorage.removeItem('id');
+        localStorage.removeItem('details');
     }
 
 });
