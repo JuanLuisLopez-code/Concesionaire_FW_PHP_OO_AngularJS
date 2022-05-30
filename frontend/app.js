@@ -61,6 +61,7 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.run(function($rootScope, services, services_search, $location, services_login, $route) {
+
     services_search.load_brands();
 
     $rootScope.rotate_category = function(brand) {
@@ -92,6 +93,7 @@ app.run(function($rootScope, services, services_search, $location, services_logi
         localStorage.removeItem('move');
         localStorage.removeItem('id');
         localStorage.removeItem('details');
+        location.reload();
     }
 
 });

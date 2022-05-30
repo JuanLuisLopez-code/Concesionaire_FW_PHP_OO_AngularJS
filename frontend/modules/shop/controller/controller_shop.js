@@ -1,4 +1,4 @@
-app.controller('controller_shop', function($rootScope, $scope, $route, services, shopAll, services_shop, services_shop_map, $window) {
+app.controller('controller_shop', function($rootScope, $scope, $route, services, shopAll, services_shop, $window) {
 
     $scope.asd = true;
     $scope.img_carousel = false;
@@ -43,10 +43,10 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
     } else {
         var count1 = 2;
         $scope.loadMore = function() {
-            count1++;
-            $scope.shopAll_scope = shopAll.slice(0, count1);
-        }
-        services_shop_map.mapBox_all(shopAll);
+                count1++;
+                $scope.shopAll_scope = shopAll.slice(0, count1);
+            }
+            // services_shop_map.mapBox_all(shopAll);
     }
 
     $scope.filter_remove = function() {
