@@ -60,8 +60,11 @@ app.config(['$routeProvider', function($routeProvider) {
         });
 }]);
 
-app.run(function($rootScope, services, services_search, $location, services_login, $route) {
+app.run(function($rootScope, services, services_search, $location, services_login, $route, services_security_login) {
 
+    services_security_login.protecturl();
+    services_security_login.refresh_token();
+    services_security_login.refresh_session();
     services_search.load_brands();
 
     $rootScope.rotate_category = function(brand) {
@@ -83,17 +86,14 @@ app.run(function($rootScope, services, services_search, $location, services_logi
     }
     if (localStorage.getItem('token')) {
         services_login.token_c();
+        services_security_login.check_login_interval();
     } else {
         $rootScope.token_scope_log = false;
         $rootScope.log_out_show = false;
     }
 
     $rootScope.log_out = function() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('move');
-        localStorage.removeItem('id');
-        localStorage.removeItem('details');
-        location.reload();
+        services_security_login.log_out();
     }
 
 });
