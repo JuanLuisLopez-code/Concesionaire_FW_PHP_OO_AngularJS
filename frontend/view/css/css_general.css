@@ -2659,5 +2659,17 @@ h3.details {
 }
 
 #featured {
-    display: flex;
+    background-color: rgb(30, 30, 30);
+    width: 100%;
+    display: inline-block;
+}
+
+#prueba {
+    width: auto;
+    margin: 5%;
+    display: inline-block;
+}
+
+.moreBook {
+    background-color: rgb(30, 30, 30);
 }

@@ -3,7 +3,7 @@ app.controller('controller_home', function($scope, services, categoria, type, ca
     $scope.categoria_scope = categoria;
     $scope.type_scope = type;
     var books_array = [];
-
+    var prueba_slice = 2;
 
     $scope.myInterval = 3000;
     $scope.noWrapSlides = false;
@@ -20,7 +20,13 @@ app.controller('controller_home', function($scope, services, categoria, type, ca
         }
     });
 
-    $scope.books_scope = books_array;
+    $scope.MoreBooks = function() {
+        prueba_slice++;
+        prueba_slice++;
+        $scope.books_scope = books_array.slice(0, prueba_slice);
+    }
+
+    $scope.books_scope = books_array.slice(0, prueba_slice);
 
     $scope.click_carousel = function(id_brand) {
         let filters = [];

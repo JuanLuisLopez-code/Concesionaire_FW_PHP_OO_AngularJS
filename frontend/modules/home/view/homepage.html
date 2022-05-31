@@ -23,8 +23,8 @@
         </slide>
     </carousel>
 
-    <div class="section group" id="containerCategories" ng-repeat="categoria in categoria_scope">
-        <div class="grid_1_of_4 images_1_of_4">
+    <div class="section group" id="containerCategories">
+        <div class="grid_1_of_4 images_1_of_4" ng-repeat="categoria in categoria_scope">
             <h3>{{categoria.cat_name}}</h3>
             <a class="estado" id="' + categoria[row].cat_name + '"><img src='frontend/{{categoria.cat_image}}'>
             </a>
@@ -51,15 +51,16 @@
         </div>
     </div>
     </div>
-
     <div id="featured">
         <div id="prueba" ng-repeat="books in books_scope">
             <br>
             <div id='cont_img'><img src='{{books.thumbnail}}' class='cart' data-toggle='modal' data-target='#exampleModal'></div>
             <div id='list_header'><span id='li_brand'> {{books.title}} </br></span></div>
+
         </div>
     </div>
-    <div id="btnfeatured"></div>
-    <div id="nomore"></div>
+    <div class="moreBook">
+        <a class="estado link moreBook" ng-click="MoreBooks()"><span><span>More Books</span></span></a>
+    </div>
 
 </body>

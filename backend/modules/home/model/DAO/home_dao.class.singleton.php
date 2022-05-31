@@ -32,16 +32,5 @@
             return $db->listar($stmt);
         }
 
-        // public function select_data_brands($db, $items, $loaded) {
-        //     $sql = "SELECT * FROM `brands` LIMIT $loaded, $items";
-        //     $stmt = $db->ejecutar($sql);
-        //     return $db->listar($stmt);
-        // }
-
-        // public function select_load_more($db) {
-        //     $sql = "SELECT COUNT(*) as 'count' FROM `brands`";
-        //     $stmt = $db->ejecutar($sql);
-        //     return $db->listar($stmt);
-        // }
     }
 ?>

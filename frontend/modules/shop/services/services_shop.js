@@ -6,6 +6,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
     function filter_home(filtros) {
         services.post('shop', 'redirect', { filtros })
             .then(function(response) {
+                $rootScope.shopAll_scope = response.slice(0, 2);
                 var count1 = 2;
                 $rootScope.loadMore = function() {
                     count1++;
@@ -21,6 +22,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
     function filter_shop(filter) {
         services.post('shop', 'filter', { filter })
             .then(function(response) {
+                $rootScope.shopAll_scope = response.slice(0, 2);
                 var count1 = 2;
                 $rootScope.loadMore = function() {
                     count1++;
@@ -32,6 +34,7 @@ app.factory('services_shop', ['services', '$rootScope', function(services, $root
     function filter_search(filters_search) {
         services.post('shop', 'filters_search', { filters_search })
             .then(function(response) {
+                $rootScope.shopAll_scope = response.slice(0, 2);
                 var count1 = 2;
                 $rootScope.loadMore = function() {
                     count1++;
