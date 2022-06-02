@@ -33192,7 +33192,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .like_red {
-    color: red;
+    color: red !important;
     float: right;
 }
 

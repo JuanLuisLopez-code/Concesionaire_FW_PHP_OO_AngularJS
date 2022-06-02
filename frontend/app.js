@@ -60,7 +60,7 @@ app.config(['$routeProvider', function($routeProvider) {
         });
 }]);
 
-app.run(function($rootScope, services, services_search, $location, services_login, $route, services_security_login) {
+app.run(function($rootScope, services, services_search, $location, services_login, $route, services_security_login, services_likes) {
 
     services_security_login.protecturl();
     services_security_login.refresh_token();
@@ -87,6 +87,7 @@ app.run(function($rootScope, services, services_search, $location, services_logi
     if (localStorage.getItem('token')) {
         services_login.token_c();
         services_security_login.check_login_interval();
+        services_likes.load_likes();
     } else {
         $rootScope.token_scope_log = false;
         $rootScope.log_out_show = false;
@@ -95,5 +96,11 @@ app.run(function($rootScope, services, services_search, $location, services_logi
     $rootScope.log_out = function() {
         services_security_login.log_out();
     }
+
+    $rootScope.$on('$routeChangeStart', function() {
+        if (localStorage.getItem('token')) {
+            services_likes.load_likes();
+        }
+    });
 
 });

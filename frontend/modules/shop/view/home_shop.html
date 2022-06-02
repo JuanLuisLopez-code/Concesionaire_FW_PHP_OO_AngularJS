@@ -58,7 +58,7 @@
                                         </div>
                                         <div class="cell-sm-6">
                                             <div class="box-width-3">
-                                                <p class="like" id="{{cars.id}}"></p>
+                                                </p><i id="like_{{cars.id}}" class="like_white fa-heart fa-2x" ng-class="{'like_red':cars.like}" ng-click="likes()"></i>
                                                 <p class="heading-1 wow fadeInLeftSmall">{{cars.brand_name}}</p>
                                                 <article class="quote-big wow fadeInLeftSmall" data-wow-delay=".1s">
                                                     <p class="q">{{cars.modelo}}</p>

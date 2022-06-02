@@ -1,4 +1,4 @@
-app.controller('controller_shop', function($rootScope, $scope, $route, services, shopAll, services_shop, $window) {
+app.controller('controller_shop', function($rootScope, $scope, $route, services, shopAll, services_shop, $window, services_likes, toastr) {
 
     $scope.asd = true;
     $scope.img_carousel = false;
@@ -58,5 +58,16 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
         localStorage.removeItem("filters_search");
         localStorage.removeItem("details");
         $window.location.reload();
+    }
+
+    $rootScope.likes = function() {
+        if (localStorage.getItem('token')) {
+            services_likes.likes(this.cars.id);
+        } else {
+            toastr.success('Tiene que loguearse para dar like');
+            setTimeout(function() {
+                location.href = "#/login";
+            }, 5000);
+        }
     }
 })
