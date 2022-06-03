@@ -38,29 +38,22 @@
                     </div>
                 </div>
             </form>
-            <form id="register__form" method="post">
+            <form id="register__form" method="post" name="register__form">
                 <div class="form__content">
                     <div class="sign-up-htm">
                         <div class="group">
                             <label for="user" class="label">Username</label>
-                            <input id="user" type="text" class="input" name="user" value="" ng-model="user_register">
-                            <font color="red">
-                                <span id="error_username" class="error"></span>
-                            </font>
+                            <input id="user" type="text" class="input" name="user" value="" ng-model="user_register" ng-minlength="4" required>
+                            <span class="errors" ng-show="register__form.user.$invalid && register__form.user.$dirty" style="color: red;">Min length is 4</span>
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Password</label>
-                            <input id="pass" type="password" class="input" name="pass" value="" ng-model="pass_register">
-                            <font color="red">
-                                <span id="error_password" class="error"></span>
-                            </font>
+                            <input id="pass" type="password" class="input" name="pass" value="" ng-model="pass_register" ng-minlength="4" required>
+                            <span class="errors" ng-show="register__form.pass.$invalid && register__form.pass.$dirty" style="color: red;">Min length is 4</span>
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Email Address</label>
-                            <input id="email" type="email" class="input" name="email" value="" ng-model="email_register">
-                            <font color="red">
-                                <span id="error_email" class="error"></span>
-                            </font>
+                            <input id="email" type="email" class="input" name="email" value="" ng-model="email_register" required>
                         </div>
                         <div class="group">
                             <input class="button" id="register" type="button" value="Enter" ng-click="register()" />
@@ -89,16 +82,10 @@
                     <div class="group">
                         <label for="email_recovery" class="label">Email</label>
                             <input id="email_recovery" type="email" class="input" name="email_recovery" value="" ng-model="email_recovery">
-                            <font color="red">
-                                <span id="error_email_recovery" class="error"></span>
-                            </font>
                         </div>
                         <div class="group">
                             <label for="pass_recovery" class="label">Password Recovery</label>
                             <input id="pass_recovery" type="password" class="input" data-type="password" name="passwd_recovery" ng-model="pass_recovery">
-                            <font color="red">
-                                <span id="error_pass_recovery" class="error"></span>
-                            </font>
                         </div>
                         <div class="group">
                             <input type="button" class="button" id="recovery" value="Send Recovery" ng-click="send_recovery()">

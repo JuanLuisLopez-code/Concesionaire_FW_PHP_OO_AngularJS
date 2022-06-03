@@ -1572,6 +1572,7 @@ h3.details {
 /*footer*/
 
 .footer-bg {
+    margin-top: 15em;
     background: url('/framework_php_GitHub/view/images/footer-bg.png');
 }
 

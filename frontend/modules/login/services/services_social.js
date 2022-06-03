@@ -44,7 +44,6 @@ app.factory('services_social', ['services', '$rootScope', 'toastr', function(ser
         const user_id = user_data.user.uid
         const provider = user_data.credential.providerId;
         const user = { 'username': username, 'email': email, 'profile': profile, 'user_id': user_id, "provider": provider };
-        console.log(user);
         services.post('login', 'social_singin', { 'username': username, 'email': email, 'profile': profile, 'user_id': user_id, "provider": provider })
             .then(function(response) {
                 localStorage.setItem('token', response);
