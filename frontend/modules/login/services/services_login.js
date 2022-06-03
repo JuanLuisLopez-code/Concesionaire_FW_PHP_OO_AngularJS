@@ -29,7 +29,6 @@ app.factory('services_login', ['services', '$rootScope', 'toastr', function(serv
                         location.href = "#/shop";
                     }, 5000);
                 } else if (localStorage.getItem('move')) {
-                    var move = JSON.parse(localStorage.getItem('move'));
                     toastr.success('Volviendo a las compras');
                     setTimeout(function() {
                         location.href = "#/shop";

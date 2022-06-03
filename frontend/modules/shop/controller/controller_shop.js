@@ -1,5 +1,5 @@
 app.controller('controller_shop', function($rootScope, $scope, $route, services, shopAll, services_shop, $window, services_likes, toastr) {
-
+    localStorage.setItem('move', null);
     $scope.asd = true;
     $scope.img_carousel = false;
     $scope.div_more_cars = false;
@@ -41,12 +41,12 @@ app.controller('controller_shop', function($rootScope, $scope, $route, services,
         services_shop.highlight(JSON.parse(localStorage.getItem("filter")));
         services_shop.filter_shop(JSON.parse(localStorage.getItem("filter")));
     } else {
+        shopAll = services_likes.response_likes(shopAll);
         var count1 = 2;
         $scope.loadMore = function() {
-                count1++;
-                $scope.shopAll_scope = shopAll.slice(0, count1);
-            }
-            // services_shop_map.mapBox_all(shopAll);
+            count1++;
+            $scope.shopAll_scope = shopAll.slice(0, count1);
+        }
     }
 
     $scope.filter_remove = function() {

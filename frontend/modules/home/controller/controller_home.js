@@ -1,4 +1,5 @@
 app.controller('controller_home', function($scope, services, categoria, type, carousel, books, $location) {
+    localStorage.removeItem('move')
     $scope.carousel_scope = carousel;
     $scope.categoria_scope = categoria;
     $scope.type_scope = type;

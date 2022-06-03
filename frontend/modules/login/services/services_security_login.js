@@ -47,10 +47,12 @@ app.factory('services_security_login', ['services', '$rootScope', 'toastr', func
     }
 
     function log_out() {
+        console.log("asd")
         localStorage.removeItem('token');
         localStorage.removeItem('move');
         localStorage.removeItem('id');
         localStorage.removeItem('details');
+        localStorage.removeItem('likes')
         services.post('login', 'delete_session');
         location.reload();
     }

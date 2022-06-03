@@ -51,11 +51,13 @@ app.factory('services_shop', ['services', '$rootScope', 'services_likes', functi
         let single = [];
         services.post('shop', 'details', { id })
             .then(function(response) {
+
                 for (var i = 0; i < response.length; i++) {
                     img_array.push(response[i].img);
                 }
                 single.push(response[0])
                 $rootScope.img_array_scope = img_array;
+                let car_details = services_likes.response_likes(single)
                 $rootScope.shopAll_scope = single;
             })
     }
