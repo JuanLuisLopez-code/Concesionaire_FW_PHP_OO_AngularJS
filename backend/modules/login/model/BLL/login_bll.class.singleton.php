@@ -146,7 +146,9 @@
 			$email = $args[1];
 			$id_user = $args[2];
 			if(!$this -> dao -> validate_email ($this->db, $email)){
-				if ($this -> dao -> insert_social($this->db, $username, $email, $id_user)){
+				$hashavatar = md5(strtolower(trim($username))); 
+            	$avatar = "https://placeimg.com/400/400/$hashavatar";
+				if ($this -> dao -> insert_social($this->db, $username, $email, $id_user,$avatar)){
 					$_SESSION['username'] = $username;
 					$_SESSION['tiempo'] = time();
 					return middleware::midd_encode($username);
