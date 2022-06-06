@@ -20,7 +20,7 @@
 			if ($this -> dao -> validate_user ($this->db, $user, $email)){
 				echo json_encode("Usuarios existente");
 				exit;
-			}elseif($this -> dao -> validate_email ($this->db, $email)){
+			}else if($this -> dao -> validate_email ($this->db, $email)){
 				echo json_encode("Email existente");
 				exit;
 			}else{
@@ -132,11 +132,19 @@
 
 		public function get_recovery_pass_BLL($email, $password) {
 			if($this -> dao -> validate_email ($this->db, $email)){
-				if ($this -> dao -> update_use_email($this ->db, $email)){
-					$hashed_pass = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
-					$email_token_register = $this -> dao -> take_token($this->db, $email);
-					mail::recovery_email($email, $email_token_register[0]['token_email']);
-					return ($this-> dao -> recovery_password($this->db, $email, $hashed_pass));
+				$prueba = $this -> dao -> validate_email ($this->db, $email);
+				// echo json_encode($prueba[0]['type']);
+				// exit;
+				if ($prueba[0]['type'] == "client"){
+					if ($this -> dao -> update_use_email($this ->db, $email)){
+						$hashed_pass = password_hash($password, PASSWORD_DEFAULT, ['cost' => 12]);
+						$email_token_register = $this -> dao -> take_token($this->db, $email);
+						mail::recovery_email($email, $email_token_register[0]['token_email']);
+						return ($this-> dao -> recovery_password($this->db, $email, $hashed_pass));
+					}
+				}else{
+					echo json_encode("Email social");
+					exit;
 				}
 			}
 		}
@@ -145,10 +153,11 @@
 			$username = $args[0];
 			$email = $args[1];
 			$id_user = $args[2];
+			$type = $args[3];
 			if(!$this -> dao -> validate_email ($this->db, $email)){
 				$hashavatar = md5(strtolower(trim($username))); 
             	$avatar = "https://placeimg.com/400/400/$hashavatar";
-				if ($this -> dao -> insert_social($this->db, $username, $email, $id_user,$avatar)){
+				if ($this -> dao -> insert_social($this->db, $username, $email, $id_user, $avatar, $type)){
 					$_SESSION['username'] = $username;
 					$_SESSION['tiempo'] = time();
 					return middleware::midd_encode($username);

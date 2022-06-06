@@ -16,35 +16,35 @@ app.factory('services_social', ['services', '$rootScope', 'toastr', function(ser
 
 
     function log_google() {
-
+        let type = "google";
         var authService = firebase.auth();
         var provider = new firebase.auth.GoogleAuthProvider();
         provider.addScope('email');
         authService.signInWithPopup(provider)
             .then(function(data) {
-                login_social_singin(data);
+                login_social_singin(data, type);
             })
     }
 
     function log_github() {
-
+        let type = "github";
         var authService = firebase.auth();
         var provider = new firebase.auth.GithubAuthProvider();
         provider.addScope('email');
         authService.signInWithPopup(provider)
             .then(function(data) {
-                login_social_singin(data);
+                login_social_singin(data, type);
             })
     }
 
-    function login_social_singin(user_data) {
+    function login_social_singin(user_data, type) {
         const username = user_data.user.displayName;
         const email = user_data.user.email
         const profile = user_data.user.photoURL
         const user_id = user_data.user.uid
         const provider = user_data.credential.providerId;
         const user = { 'username': username, 'email': email, 'profile': profile, 'user_id': user_id, "provider": provider };
-        services.post('login', 'social_singin', { 'username': username, 'email': email, 'profile': profile, 'user_id': user_id, "provider": provider })
+        services.post('login', 'social_singin', { 'username': username, 'email': email, 'profile': profile, 'user_id': user_id, "provider": provider, 'type': type })
             .then(function(response) {
                 localStorage.setItem('token', response);
                 if (localStorage.getItem('details')) {

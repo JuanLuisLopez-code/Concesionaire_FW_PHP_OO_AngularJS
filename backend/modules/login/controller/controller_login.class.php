@@ -41,7 +41,7 @@
         }
 
         function social_singin() {
-            echo json_encode(common::load_model('login_model', 'get_social_singin', [$_POST['username'], $_POST['email'], $_POST['user_id']]));
+            echo json_encode(common::load_model('login_model', 'get_social_singin', [$_POST['username'], $_POST['email'], $_POST['user_id'], $_POST['type']]));
         }
     }
 ?>

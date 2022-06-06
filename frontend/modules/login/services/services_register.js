@@ -5,10 +5,10 @@ app.factory('services_register', ['services', '$rootScope', 'toastr', function(s
     function register_user(data) {
         services.post('login', 'register_c', { 'user': data['user'], 'pass': data['pass'], 'email': data['email'] })
             .then(function(response) {
-                if (response == "Usuarios existente") {
-                    $("#error_username").html('El usuario ya esta registrado');
-                } else if (response == "Email existente") {
-                    $("#error_email").html('El email ya esta registrado');
+                if (JSON.parse(response) == "Usuarios existente") {
+                    toastr.warning('El usuario ya esta registrado');
+                } else if (JSON.parse(response) == "Email existente") {
+                    toastr.warning('Email existente');
                 } else {
                     toastr.success('Porfavor verifique su email, para poder continuar');
                     setTimeout(function() {
@@ -24,7 +24,11 @@ app.factory('services_register', ['services', '$rootScope', 'toastr', function(s
         } else {
             services.post('login', 'recovery_pass', { 'email_recovery': data['email_recovery'], 'passwd_recovery': data['passwd_recovery'] })
                 .then(function(response) {
-                    toastr.success('Porfavor revise su correo para cambiar la contraseña');
+                    if (JSON.parse(response) == "Email social") {
+                        toastr.warning('Este correo al ser de google o github, no podemos cambiar la contraseña');
+                    } else {
+                        toastr.success('Porfavor revise su correo para cambiar la contraseña');
+                    }
                 })
         }
     }
